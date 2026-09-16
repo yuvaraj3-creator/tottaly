@@ -1,0 +1,2 @@
+import {products} from "@/lib/products"; import {ProductCard} from "@/components/ProductCard";
+export default function Products(){return <main className="container py-12"><h1 className="text-4xl font-black">All Products</h1><p className="muted mt-2">Compare current partner offers in one place.</p><div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-8">{products.map(p=><ProductCard key={p.id} p={p}/>)}</div></main>}

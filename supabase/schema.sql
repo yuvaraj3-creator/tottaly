@@ -1,0 +1,7 @@
+create extension if not exists "uuid-ossp";
+create table if not exists products(id uuid primary key default uuid_generate_v4(), title text not null, brand text, model text, gtin text, category text, image_url text, created_at timestamptz default now());
+create table if not exists offers(id uuid primary key default uuid_generate_v4(), product_id uuid references products(id) on delete cascade, store text not null, price numeric not null, currency text default 'INR', product_url text not null, image_url text, in_stock boolean default true, updated_at timestamptz default now());
+create table if not exists price_history(id uuid primary key default uuid_generate_v4(), offer_id uuid references offers(id) on delete cascade, price numeric not null, captured_at timestamptz default now());
+create table if not exists price_alerts(id uuid primary key default uuid_generate_v4(), email text not null, product_id uuid references products(id) on delete cascade, target_price numeric not null, active boolean default true, created_at timestamptz default now());
+create table if not exists affiliate_clicks(id uuid primary key default uuid_generate_v4(), offer_id uuid references offers(id) on delete set null, source text, clicked_at timestamptz default now());
+create table if not exists sync_runs(id uuid primary key default uuid_generate_v4(), status text not null, result jsonb, created_at timestamptz default now());

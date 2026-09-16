@@ -1,0 +1,2 @@
+import {NextRequest,NextResponse} from "next/server"; import {getSupabaseAdmin} from "@/lib/supabase";
+export async function GET(req:NextRequest){const url=req.nextUrl.searchParams.get("url");const offer=req.nextUrl.searchParams.get("offer");if(!url)return NextResponse.json({ok:false,error:"Missing URL"},{status:400});const s=getSupabaseAdmin();if(s&&offer)await s.from("affiliate_clicks").insert({offer_id:offer,source:"tottaly-web"});return NextResponse.redirect(url);}

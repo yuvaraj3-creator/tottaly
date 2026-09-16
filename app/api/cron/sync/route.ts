@@ -1,0 +1,2 @@
+import {NextRequest,NextResponse} from "next/server"; import {syncAllStores} from "@/lib/sync";
+export async function GET(req:NextRequest){const secret=process.env.CRON_SECRET;if(secret&&req.headers.get("authorization")!==`Bearer ${secret}`)return NextResponse.json({ok:false,error:"Unauthorized"},{status:401});return NextResponse.json({ok:true,syncedAt:new Date().toISOString(),results:await syncAllStores()});}

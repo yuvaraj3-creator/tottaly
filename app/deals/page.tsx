@@ -1,0 +1,2 @@
+import {products} from "@/lib/products"; import {ProductCard} from "@/components/ProductCard";
+export default function Deals(){const deals=products.filter(p=>p.offers.length>2);return <main className="container py-12"><h1 className="text-4xl font-black">Deals</h1><p className="muted mt-2">Products with multiple store offers.</p><div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-8">{deals.map(p=><ProductCard key={p.id} p={p}/>)}</div></main>}

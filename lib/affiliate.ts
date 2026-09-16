@@ -1,0 +1,1 @@
+export function buildAffiliateUrl(destination:string){return destination;}

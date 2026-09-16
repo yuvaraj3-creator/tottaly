@@ -1,0 +1,1 @@
+export default function Page(){return <main className="container py-16 max-w-3xl"><h1 className="text-4xl font-black">Contact</h1><p className="text-lg muted mt-5">For partnerships, affiliate feeds, corrections or support, use your business email here when the production site is launched.</p></main>
